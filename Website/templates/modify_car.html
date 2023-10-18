@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Car</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: center;
+            font-size: 50px;
+            background-color: #05162c;
+            color: #ffffff; /* Set text color to white */
+            margin: 0;
+        }
+
+        .entry-box {
+            margin-top: 50px;
+        }
+
+        input[type="text"] {
+            width: 600px;
+            padding: 10px;
+            font-size: 25px;
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border: 1px solid #1a1a1a;
+            border-radius: 40px;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #243d5e;
+            color: #ffffff; /* Set text color to white */
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 25px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 20px; /* Reduced margin */
+            margin-top: 50px;
+        }
+
+        button:hover {
+            background-color: #020c18;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%; /* Set the width of the container */
+            height: 300px; /* Set the height of the container */
+            overflow: hidden; /* Hide any overflow */
+        }
+
+        .image-container img {
+            width: 40%; /* Make the image fill the container */
+            top: 0;
+            left: 480px;
+        }
+    </style>
+</head>
+<body>
+    <div id="popup" class="popup">
+        <span class="popuptext" id="popup-text">{{ message }}</span>
+    </div>    
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='ParkingIcon1.png') }}" alt="Your Image">
+    </div>
+
+    <div class="entry-box">
+        <form action="/modify_car" method="post">
+            <label for="car_number">Car Number</label><br>                                               
+            <input type="text" id="car_number" name="car_number" required>
+            <br>
+            <button type="submit" name="btnpr" value="add_car">Add this Car</button>
+            <button type="submit" name="btnpr" value="delete_car">Delete this Car</button>
+        </form>        
+    </div>
+    <script>
+        function showPopup(message) {
+            var popup = document.getElementById("popup");
+            var popupText = document.getElementById("popup-text");
+            popup.style.display = "block";
+            popupText.innerHTML = message;
+            setTimeout(function() {
+                popup.style.display = "none";
+            }, 3000); // Hide the popup after 3 seconds (adjust as needed)
+        }
+    </script>
+    
+</body>
+</html>
